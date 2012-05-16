@@ -9,6 +9,13 @@ Misfit allows any module to act like a ruby exception class and gives the abilit
 
 Misfit also provides a mechanism to change the error handling policy from raising to something else
 
+Installation
+------------
+
+In your Gemfile:
+
+    gem 'misfit'
+    
 Why?
 ----
 
@@ -94,6 +101,17 @@ You can also optionally wrap and add data to any Error:
 
 `YourLib::Error.wrap &block` causes all raised exceptions to be wrapped as `YourLib::Error`
 
+Development
+-----------
+
+To run the specs, you can start from the last known good set of gem dependencies in Gemfile.lock.development:
+
+    git clone http://github.com/i2w/misfit
+    cd misfit
+    cp Gemfile.lock.development Gemfile.lock
+    bundle
+    bundle exec rake spec
+
 Other Examples of use:
 ----------------------
 
@@ -128,3 +146,8 @@ Other Examples of use:
 
     # the resulting error will be an IOError, extended with MyIOError, and MyError, and will be rescued as such
     raise MyIOError
+    
+License
+-------
+
+This project uses the MIT-LICENSE.
