@@ -1,4 +1,4 @@
-misfit
+misfit [![Build Status](https://secure.travis-ci.org/i2w/misfit.png?branch=master)](http://travis-ci.org/i2w/misfit)
 ======
 
 Flexible approach to handling exceptions in ruby (for library writers, or consumers).  Inspired by [Avdi Grim](http://avdi.org/)'s excellent book [Exceptional Ruby](http://exceptionalruby.com/).
