@@ -20,8 +20,6 @@ RDoc::Task.new(:rdoc) do |rdoc|
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
 
-Bundler::GemHelper.install_tasks
-
 require 'rspec/core/rake_task'
 
 RSpec::Core::RakeTask.new(:spec)
@@ -31,3 +29,14 @@ task :simplecov => [:simplecov_env, :spec]
 task :simplecov_env do ENV['SIMPLECOV'] = '1' end
 
 task :default => :spec
+
+Bundler::GemHelper.install_tasks
+
+task :release => :check_gemfile
+
+task :check_gemfile do
+  if File.exists?("Gemfile.lock") && File.read("Gemfile.lock") != File.read("Gemfile.lock.development")
+    cp "Gemfile.lock", "Gemfile.lock.development"
+    raise "** Gemfile.lock.development has been updated, please commit these changes."
+  end
+end
