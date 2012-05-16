@@ -13,20 +13,22 @@ module Misfit
   attr_accessor :data
   
   module ClassMethods
-    def new message, data = nil, *backtrace
-      wrap_exception exception_class.exception(message, *backtrace), data
-    end
-    
-    def exception message, *args
-      new message, nil, *args
-    end
-    
+    # when called with an exception, makes the exception a <self>
+    # when called with a block, any exceptions raised in the block will be wrapped as <self>
     def wrap *args, &block
       if block
         wrap_block &block
       else
         wrap_exception *args
       end
+    end
+    
+    def new message, data = nil, *backtrace
+      wrap_exception exception_class.exception(message, *backtrace), data
+    end
+    
+    def exception message, *args
+      new message, nil, *args
     end
     
     def exception_class klass = nil
