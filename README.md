@@ -3,7 +3,7 @@ misfit [![Build Status](https://secure.travis-ci.org/i2w/misfit.png?branch=maste
 
 Flexible approach to handling exceptions in ruby (for library writers, or consumers).  Inspired by [Avdi Grim](http://avdi.org/)'s excellent book [Exceptional Ruby](http://exceptionalruby.com/).
 
-This was developed by [Ian White](http://github.com/ianwhite) while working at [Distinctive Doors](http://distinctivedoors.co.uk) who have kindly agreed to release this under the MIT-LICENSE.
+This was developed by [Ian White](http://github.com/ianwhite) while working at [Distinctive Doors](http://distinctivedoors.co.uk/oss) who have kindly agreed to release this under the MIT-LICENSE.
 
 Misfit allows any module to act like a ruby exception class and gives the ability to decorate any standard ruby exception, optionally adding data.
 
