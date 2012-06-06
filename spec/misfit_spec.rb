@@ -157,17 +157,17 @@ module MisfitSpec
 
       context "for Error.new('message')" do
         let(:error) { Error.new('message') }
-        it { should == '#<StandardError (MisfitSpec::Error): message>' }
+        it { should =~ /\(MisfitSpec::Error\): message/ }
       end
 
       context "for FazError.new('message')" do
         let(:error) { FazError.new('message') }
-        it { should == '#<IOError (MisfitSpec::FazError, MisfitSpec::FooError, MisfitSpec::Error): message>' }
+        it { should =~ /\(MisfitSpec::FazError, MisfitSpec::FooError, MisfitSpec::Error\): message/ }
       end
 
       context "when error has data `Error.new('message', some: 'data')`" do
         let(:error) { Error.new('message', some: "data") }
-        it { should ==  '#<StandardError (MisfitSpec::Error): message, {:some=>"data"}>' }
+        it { should =~ /\(MisfitSpec::Error\): message, \{:some=>"data"\}/ }
       end
     end
   end
