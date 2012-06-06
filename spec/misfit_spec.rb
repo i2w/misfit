@@ -155,19 +155,20 @@ module MisfitSpec
     describe "#inspect" do
       subject { error.inspect }
 
-      context "for Error.new('message')" do
-        let(:error) { Error.new('message') }
-        it { should =~ /\(MisfitSpec::Error\): message/ }
+      context "for Error.new" do
+        let(:error) { Error.new }
+        it { should =~ /\(MisfitSpec::Error\)/ }
       end
 
-      context "for FazError.new('message')" do
-        let(:error) { FazError.new('message') }
-        it { should =~ /\(MisfitSpec::FazError, MisfitSpec::FooError, MisfitSpec::Error\): message/ }
+      context "for FazError.new" do
+        let(:error) { FazError.new }
+        it { should =~ /\(MisfitSpec::FazError, MisfitSpec::FooError, MisfitSpec::Error\)/ }
       end
 
       context "when error has data `Error.new('message', some: 'data')`" do
         let(:error) { Error.new('message', some: "data") }
-        it { should =~ /\(MisfitSpec::Error\): message, \{:some=>"data"\}/ }
+        it { should =~ /\(MisfitSpec::Error\)/ }
+        it { should =~ /\{:some=>"data"\}/ }
       end
     end
   end
