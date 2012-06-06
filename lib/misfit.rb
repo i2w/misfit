@@ -36,6 +36,10 @@ module Misfit
       @exception_class
     end
 
+    def misfit?
+      true
+    end
+
   private
     def wrap_exception exception, data = nil
       exception.tap do |e|
@@ -59,8 +63,16 @@ module Misfit
     end
   end
 
+  def inspect
+    super.sub(/:/," (#{misfits.map(&:name).join(', ')}):")
+  end
+
   # this is here solely because of the way rspec instantiates exception objects in stubs
   def initialize *args
     super
+  end
+
+  def misfits
+    singleton_class.included_modules.select {|m| m.respond_to?(:misfit?) && m.misfit? }
   end
 end

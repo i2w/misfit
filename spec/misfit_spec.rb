@@ -151,6 +151,20 @@ module MisfitSpec
         end
       end
     end
+
+    describe "#inspect" do
+      subject { error.inspect }
+
+      context "for Error.new('message')" do
+        let(:error) { Error.new('message') }
+        it { should == '#<StandardError (MisfitSpec::Error): message>' }
+      end
+
+      context "for FazError.new('message')" do
+        let(:error) { FazError.new('message') }
+        it { should == '#<IOError (MisfitSpec::FazError, MisfitSpec::FooError, MisfitSpec::Error): message>' }
+      end
+    end
   end
 end
 
