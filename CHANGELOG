@@ -1,2 +1,6 @@
+= 0.0.2
+  * Support for the way rspec instantiates errors in stubs
+	* Support for instantiation without error messages
+
 = 0.0.1
   * Initial Release
