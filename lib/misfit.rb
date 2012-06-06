@@ -64,7 +64,10 @@ module Misfit
   end
 
   def inspect
-    super.sub(/:/," (#{misfits.map(&:name).join(', ')}):")
+    representation = super
+    representation.sub!(/:/, " (#{misfits.map(&:name).join(', ')}):")
+    representation.sub!(/>$/, ", #{data.inspect}>") if data
+    representation
   end
 
   # this is here solely because of the way rspec instantiates exception objects in stubs

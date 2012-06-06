@@ -1,3 +1,6 @@
+= 0.0.4
+  * #inspect shows data if present
+
 = 0.0.3
   * #inspect shows the included misfits
 

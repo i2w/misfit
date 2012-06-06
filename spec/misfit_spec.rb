@@ -164,6 +164,11 @@ module MisfitSpec
         let(:error) { FazError.new('message') }
         it { should == '#<IOError (MisfitSpec::FazError, MisfitSpec::FooError, MisfitSpec::Error): message>' }
       end
+
+      context "when error has data `Error.new('message', some: 'data')`" do
+        let(:error) { Error.new('message', some: "data") }
+        it { should ==  '#<StandardError (MisfitSpec::Error): message, {:some=>"data"}>' }
+      end
     end
   end
 end
